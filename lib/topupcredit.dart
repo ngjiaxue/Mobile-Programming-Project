@@ -114,7 +114,7 @@ class _TopupCreditState extends State<TopupCredit> {
                   child: TextField(
                     keyboardType: TextInputType.number,
                     inputFormatters: [
-                      WhitelistingTextInputFormatter.digitsOnly
+                      FilteringTextInputFormatter.digitsOnly,
                     ],
                     controller: _amountController,
                     style: TextStyle(

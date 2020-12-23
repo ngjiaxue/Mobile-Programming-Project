@@ -448,7 +448,7 @@ class _UserThirdPageState extends State<UserThirdPage> {
       _validatePhone,
       Icon(Icons.phone),
       TextInputType.number,
-      [WhitelistingTextInputFormatter.digitsOnly],
+      [FilteringTextInputFormatter.digitsOnly],
     );
   }
 
@@ -712,7 +712,7 @@ class _UserThirdPageState extends State<UserThirdPage> {
                 Colors.deepOrange[400], null, null),
             content: Form(
               key: _userThirdPageKey,
-              autovalidate: true,
+              autovalidateMode: AutovalidateMode.always,
               child: TextFormField(
                 keyboardType: textInputType,
                 inputFormatters: inputFormatters,
@@ -1134,11 +1134,15 @@ class _UserThirdPageState extends State<UserThirdPage> {
         _isCropping = true;
       });
       if (isCamera) {
-        _image = await ImagePicker.pickImage(
-            source: ImageSource.camera, maxHeight: 500.0, maxWidth: 500.0);
+        _image = (await ImagePicker().getImage(
+            source: ImageSource.camera,
+            maxHeight: 500.0,
+            maxWidth: 500.0)) as File;
       } else {
-        _image = await ImagePicker.pickImage(
-            source: ImageSource.gallery, maxHeight: 500.0, maxWidth: 500.0);
+        _image = (await ImagePicker().getImage(
+            source: ImageSource.gallery,
+            maxHeight: 500.0,
+            maxWidth: 500.0)) as File;
       }
       if (_image == null) {
         setState(() {

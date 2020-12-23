@@ -143,7 +143,7 @@ class _TabsState extends State<Tabs> {
                   Icons.home,
                   size: 28.0,
                 ),
-                title: methods.textOnly("Home", "Oxanium Regular",
+                label: methods.textOnly("Home", "Oxanium Regular",
                     _currentTab == 0 ? 17.0 : 16.0, null, null, null),
               ),
               BottomNavigationBarItem(
@@ -178,7 +178,7 @@ class _TabsState extends State<Tabs> {
                     size: 28.0,
                   ),
                 ),
-                title: methods.textOnly("Notification", "Oxanium Regular",
+                label: methods.textOnly("Notification", "Oxanium Regular",
                     _currentTab == 1 ? 17.0 : 16.0, null, null, null),
               ),
               BottomNavigationBarItem(
@@ -213,7 +213,7 @@ class _TabsState extends State<Tabs> {
                     size: 28.0,
                   ),
                 ),
-                title: methods.textOnly("Profile", "Oxanium Regular",
+                label: methods.textOnly("Profile", "Oxanium Regular",
                     _currentTab == 1 ? 17.0 : 16.0, null, null, null),
               ),
             ],

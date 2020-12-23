@@ -50,7 +50,8 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with TickerProviderStateMixin {
   var _loginKey = GlobalKey<FormState>();
   Methods methods = new Methods();
   List<bool> _informationValidate = [false, false];
@@ -114,205 +115,219 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget loginCard(BuildContext context) {
     //start loginCard method
-    return Container(
-      height: screenHeight / 1.3,
-      margin: EdgeInsets.only(
-        top: screenHeight / 4.7,
-        left: 5.0,
-        right: 5.0,
-      ),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8.0),
-          ),
-          side: BorderSide(
-            color: Colors.black26,
-          ),
+    return FadeTransition(
+      opacity: Tween(
+        begin: 1.0,
+        end: 0.0,
+      ).animate(
+        AnimationController(
+          vsync: this,
+          duration: Duration(milliseconds: 1500),
         ),
-        color: Colors.white,
-        elevation: 10.0,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Padding(
-                //start Login and SignUp navigator
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    methods.textOnly("Login", "Oxanium Regular", 30.0,
-                        Colors.deepOrange[400], FontWeight.bold, null),
-                    GestureDetector(
-                      //start Sign Up navigator
-                      onTap: _signUp, //call _signUp method
-                      child: methods.textOnly("Sign Up", "Oxanium Regular",
-                          25.0, Colors.black45, null, null),
-                    ), //end Sign Up navigator
-                  ],
-                ),
-              ), //end Login and SignUp navigator
-              //start Welcome to Parcel Daddy text
-              Padding(
-                //start Welcome to text
-                padding: const EdgeInsets.only(
-                  top: 30.0,
-                  left: 20.0,
-                ),
-                child: methods.textOnly("Welcome to", "Oxanium Regular", 40.0,
-                    Colors.black, FontWeight.normal, null),
-              ), //end Welcome to text
-              Padding(
-                //start Parcel Daddy text
-                padding: const EdgeInsets.only(left: 20.0),
-                child: methods.textOnly("Parcel Daddy!", "Oxanium Regular",
-                    40.0, Colors.black, FontWeight.normal, null),
-              ), //end Parcel Daddy text
-              //end Welcome to Parcel Daddy text
-              //start email & password textfield
-              Padding(
-                //start email textfield
-                padding: const EdgeInsets.only(
-                  top: 20.0,
-                  left: 20.0,
-                  right: 20.0,
-                ),
-                child: methods.textField(
-                  TextInputType.emailAddress,
-                  false,
-                  _emailController,
-                  Icon(Icons.email),
-                  null,
-                  "Email",
-                  "Oxanium Regular",
-                  16.0,
-                  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Container(
+        height: screenHeight / 1.3,
+        margin: EdgeInsets.only(
+          top: screenHeight / 4.7,
+          left: 5.0,
+          right: 5.0,
+        ),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            side: BorderSide(
+              color: Colors.black26,
+            ),
+          ),
+          color: Colors.white,
+          elevation: 10.0,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  //start Login and SignUp navigator
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      methods.textOnly("Login", "Oxanium Regular", 30.0,
+                          Colors.deepOrange[400], FontWeight.bold, null),
+                      GestureDetector(
+                        //start Sign Up navigator
+                        onTap: _signUp, //call _signUp method
+                        child: methods.textOnly("Sign Up", "Oxanium Regular",
+                            25.0, Colors.black45, null, null),
+                      ), //end Sign Up navigator
+                    ],
                   ),
-                ),
-              ), //end email textfield
-              Padding(
-                //start password textfield
-                padding: const EdgeInsets.only(
-                  top: 20.0,
-                  left: 20.0,
-                  right: 20.0,
-                ),
-                child: methods.textField(
-                  TextInputType.emailAddress,
-                  _passwordHidden,
-                  _passwordController,
-                  Icon(Icons.lock),
-                  IconButton(
-                    icon: Icon(
-                      _passwordHidden ? Icons.visibility_off : Icons.visibility,
+                ), //end Login and SignUp navigator
+                //start Welcome to Parcel Daddy text
+                Padding(
+                  //start Welcome to text
+                  padding: const EdgeInsets.only(
+                    top: 30.0,
+                    left: 20.0,
+                  ),
+                  child: methods.textOnly("Welcome to", "Oxanium Regular", 40.0,
+                      Colors.black, FontWeight.normal, null),
+                ), //end Welcome to text
+                Padding(
+                  //start Parcel Daddy text
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: methods.textOnly("Parcel Daddy!", "Oxanium Regular",
+                      40.0, Colors.black, FontWeight.normal, null),
+                ), //end Parcel Daddy text
+                //end Welcome to Parcel Daddy text
+                //start email & password textfield
+                Padding(
+                  //start email textfield
+                  padding: const EdgeInsets.only(
+                    top: 20.0,
+                    left: 20.0,
+                    right: 20.0,
+                  ),
+                  child: methods.textField(
+                    TextInputType.emailAddress,
+                    false,
+                    _emailController,
+                    Icon(Icons.email),
+                    null,
+                    "Email",
+                    "Oxanium Regular",
+                    16.0,
+                    OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _passwordHidden = !_passwordHidden;
-                      });
-                    },
                   ),
-                  "Password",
-                  "Oxanium Regular",
-                  16.0,
-                  OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                ), //end email textfield
+                Padding(
+                  //start password textfield
+                  padding: const EdgeInsets.only(
+                    top: 20.0,
+                    left: 20.0,
+                    right: 20.0,
                   ),
-                ),
-              ), //start password textfield
-              //end email & password textfield
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: _isChecked,
-                      activeColor: Colors.orange[600],
-                      onChanged: (bool value) {
-                        _onTick(value); //call _onTick method
+                  child: methods.textField(
+                    TextInputType.emailAddress,
+                    _passwordHidden,
+                    _passwordController,
+                    Icon(Icons.lock),
+                    IconButton(
+                      icon: Icon(
+                        _passwordHidden
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _passwordHidden = !_passwordHidden;
+                        });
                       },
                     ),
-                    methods.textOnly("Remember Me", "Oxanium Regular", null,
-                        null, null, null),
-                  ],
-                ),
-              ), //end remember me
-              Padding(
-                //start Forget Password
-                padding: const EdgeInsets.only(left: 20.0),
-                child: GestureDetector(
-                  onTap: () => _forgetPassword(), //call _forgetPassword method
-                  child: methods.textOnly(
-                      "Forget Password?",
-                      "Oxanium Regular",
-                      18.0,
-                      Colors.blue[600],
-                      FontWeight.normal,
-                      FontStyle.italic),
-                ),
-              ), //end Forget Password
-              Padding(
-                //start Resend Verification Email
-                padding: const EdgeInsets.only(top: 10.0, left: 20.0),
-                child: GestureDetector(
-                  onTap:
-                      _resendVerificationEmail, //call _resendVerificationEmail method
-                  child: methods.textOnly(
-                      "Resend Verification Email?",
-                      "Oxanium Regular",
-                      18.0,
-                      Colors.blue[600],
-                      null,
-                      FontStyle.italic),
-                ),
-              ), //start Resend Verification Email
-              Align(
-                //start login button
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 21.0,
-                    right: 23.0,
-                    bottom: 20.0,
+                    "Password",
+                    "Oxanium Regular",
+                    16.0,
+                    OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
                   ),
-                  child: SizedBox(
-                    width: 80.0,
-                    height: 80.0,
-                    child: FloatingActionButton(
-                      splashColor: Colors.orange[800],
-                      child: Ink(
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.orange[200],
-                                Colors.orange[300],
-                                Colors.orange,
-                                Colors.orange[700],
-                              ],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
+                ), //start password textfield
+                //end email & password textfield
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Checkbox(
+                        value: _isChecked,
+                        activeColor: Colors.orange[600],
+                        onChanged: (bool value) {
+                          _onTick(value); //call _onTick method
+                        },
+                      ),
+                      methods.textOnly("Remember Me", "Oxanium Regular", null,
+                          null, null, null),
+                    ],
+                  ),
+                ), //end remember me
+                Padding(
+                  //start Forget Password
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: GestureDetector(
+                    onTap: () =>
+                        _forgetPassword(), //call _forgetPassword method
+                    child: methods.textOnly(
+                        "Forget Password?",
+                        "Oxanium Regular",
+                        18.0,
+                        Colors.blue[600],
+                        FontWeight.normal,
+                        FontStyle.italic),
+                  ),
+                ), //end Forget Password
+                Padding(
+                  //start Resend Verification Email
+                  padding: const EdgeInsets.only(top: 10.0, left: 20.0),
+                  child: GestureDetector(
+                    onTap:
+                        _resendVerificationEmail, //call _resendVerificationEmail method
+                    child: methods.textOnly(
+                        "Resend Verification Email?",
+                        "Oxanium Regular",
+                        18.0,
+                        Colors.blue[600],
+                        null,
+                        FontStyle.italic),
+                  ),
+                ), //start Resend Verification Email
+                Align(
+                  //start login button
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 21.0,
+                      right: 23.0,
+                      bottom: 20.0,
+                    ),
+                    child: SizedBox(
+                      width: 80.0,
+                      height: 80.0,
+                      child: FloatingActionButton(
+                        splashColor: Colors.orange[800],
+                        child: Ink(
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.orange[200],
+                                  Colors.orange[300],
+                                  Colors.orange,
+                                  Colors.orange[700],
+                                ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              ),
+                              borderRadius: BorderRadius.circular(80.0)),
+                          child: Container(
+                            constraints: BoxConstraints(
+                                maxWidth: 300.0, minHeight: 35.0),
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.arrow_forward,
+                              size: 30.0,
                             ),
-                            borderRadius: BorderRadius.circular(80.0)),
-                        child: Container(
-                          constraints:
-                              BoxConstraints(maxWidth: 300.0, minHeight: 35.0),
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.arrow_forward,
-                            size: 30.0,
                           ),
                         ),
+                        onPressed: _login,
+                        backgroundColor: Colors.orange[300],
                       ),
-                      onPressed: _login,
-                      backgroundColor: Colors.orange[300],
                     ),
                   ),
                 ),
-              ),
-              //end login button
-            ],
+                //end login button
+              ],
+            ),
           ),
         ),
       ),
@@ -432,7 +447,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: SingleChildScrollView(
                   child: Form(
                     key: _loginKey,
-                    autovalidate: true,
+                    autovalidateMode: AutovalidateMode.always,
                     child: Column(
                       children: <Widget>[
                         methods.textFormField(

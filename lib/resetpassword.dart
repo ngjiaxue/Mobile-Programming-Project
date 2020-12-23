@@ -77,7 +77,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             ),
             child: Form(
               key: _resetPasswordKey,
-              autovalidate: true,
+              autovalidateMode: AutovalidateMode.always,
               child: SafeArea(
                 child: _resetPassword(),
               ),

@@ -18,7 +18,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _passwordHidden = true;
   bool _passwordHidden1 = true;
   bool _isChecked = false;
-  bool _validate = false;
   List<bool> _informationValidate = [false, false, false, false, false];
   double screenHeight;
   String urlSignUp = "https://parceldaddy2020.000webhostapp.com/php/signup.php";
@@ -89,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: SingleChildScrollView(
           child: Form(
             key: _signUpKey,
-            autovalidate: _validate,
+            autovalidateMode: AutovalidateMode.always,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -164,7 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     inputFormatters: [
-                      WhitelistingTextInputFormatter.digitsOnly
+                      FilteringTextInputFormatter.digitsOnly,
                     ],
                     controller: _phoneController,
                     validator: _validatePhone,
@@ -345,7 +344,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String _validatePhone(String value) {
     //start _validatePhone method
-    if (value.length < 10) {
+    if (value.length < 10 || value.length > 11) {
       _informationValidate[2] = false;
       return 'Phone number must be only 10/11 digits';
     } else {
@@ -443,13 +442,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     //start _onTick method
     setState(() {
       _isChecked = value;
-      if (_signUpKey.currentState.validate()) {
-        _signUpKey.currentState.save();
-      } else {
-        setState(() {
-          _validate = true;
-        });
-      }
+      // if (_signUpKey.currentState.validate()) {
+      //   _signUpKey.currentState.save();
+      // } else {
+      //   setState(() {
+      //     _validate = true;
+      //   });
+      // }
     });
   } //end _onTick method
 

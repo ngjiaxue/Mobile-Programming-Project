@@ -94,7 +94,7 @@ class _AdminTabsState extends State<AdminTabs> {
                 Icons.home,
                 size: 30.0,
               ),
-              title: methods.textOnly(
+              label: methods.textOnly(
                   "Home", "Oxanium Regular", 16.0, null, null, null),
             ),
             BottomNavigationBarItem(
@@ -122,7 +122,7 @@ class _AdminTabsState extends State<AdminTabs> {
                 Icons.account_circle,
                 size: 30.0,
               ),
-              title: methods.textOnly(
+              label: methods.textOnly(
                   "Profile", "Oxanium Regular", 16.0, null, null, null),
             ),
           ],
